@@ -84,13 +84,14 @@ class PaymentController extends Controller
         // process the customer payment
 //        $client_nonce = \Braintree\PaymentMethodNonce::create($customer->braintree_nonce);
         $result = \Braintree\Transaction::sale([
-            'amount'             => 18,
+            'amount'             => 17,
             'options'            => ['submitForSettlement' => true],
             'paymentMethodNonce' => $payment_method_nonce
         ]);
 
         Log::info('paymentMethod nonce result');
         Log::info($result);
+        Log::info($result->success);
 
         // check to see if braintree has processed
         // our client purchase transaction
